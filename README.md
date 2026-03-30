@@ -23,11 +23,17 @@ Gary is a personal AI operations assistant that reads your email, calendar, Slac
 - Key meetings to prepare for
 - Open tasks prioritized by urgency
 
-**On demand**, you can ask Gary to:
-- Research a topic across your Slack, email, and transcripts
-- Synthesize meeting notes into decision docs
-- Draft communications based on context it already has
-- Prep for upcoming meetings with relevant background
+**Before every meeting**, Gary posts a context brief:
+- What was discussed last time
+- What's changed since then
+- Fires and risks to watch for
+- Your action items going in
+
+**On demand**, open a Cowork chat in Claude Code Desktop — this is your always-on surface for talking to Gary:
+- "What's the status on [project]?" — Gary pulls from Slack, transcripts, and past briefings
+- "Research [vendor] across all our channels" — synthesis across email, Slack, and meeting notes into a decision-ready doc
+- "Help me prep for the board meeting" — context from every relevant data source
+- "Draft a response to [person]'s email" — Gary already knows the context
 
 ## How It Works
 
@@ -71,7 +77,9 @@ Follow the walkthrough in [SETUP.md](SETUP.md). It covers:
 
 Most AI assistant setups are demos. Gary is a working pattern extracted from a production personal assistant that's been running daily since March 2026. The prompts, error handling, and data synthesis patterns have been iterated on through real use.
 
-The key insight: **scheduled tasks build context, context makes on-demand work powerful.** Your morning briefing isn't just a summary — it's the foundation that lets you say "research the Bridge situation" and get a decision-ready doc in 10 minutes because Gary already knows what's been discussed in Slack, what meetings happened, and what action items are open.
+The key insight: **scheduled tasks build context, context makes on-demand work powerful.** Your morning briefing isn't just a summary — it's the foundation that lets you open a Cowork chat and say "research the situation with [vendor]" and get a decision-ready doc with pricing comps and a recommendation in 10 minutes, because Gary already knows what's been discussed in Slack, what meetings happened, and what action items are open.
+
+The Cowork chat is Gary's front door. The scheduled tasks are the engine running in the background. Together, they compound — every daily note, transcript, and project doc makes Gary's answers richer.
 
 ## License
 

@@ -131,6 +131,25 @@ If not:
 - Usually it's a connector that needs re-authorization (OAuth tokens expire)
 - Re-authorize in Settings > MCP Servers
 
+### Step 8: Open Your Gary Chat
+
+This is the step that unlocks everything.
+
+In **Claude Code Desktop**, open the `gary-ai` folder as a **Cowork session** (the chat interface). This is now your surface for talking to Gary — keep it open, pin it, treat it like a DM with your chief of staff.
+
+This is where you ask things like:
+- "What's the status on [project]?"
+- "Summarize what's been happening in #engineering this week"
+- "Research [topic] across my Slack, email, and transcripts"
+- "Help me prep for tomorrow's board meeting"
+- "Draft a response to [person]'s email about [topic]"
+
+Gary has access to all your connected data sources (email, calendar, Slack) AND your vault (daily notes, transcripts, project docs). So when you ask about a topic, Gary can pull from meeting transcripts where it was discussed, Slack threads where the team debated it, emails with external context, and any project docs from previous research.
+
+**This is why the scheduled tasks matter.** The daily briefings and Slack digests build up context in the vault over time. When you ask Gary a question two months from now, it can reference daily notes, transcripts, and project docs that accumulated in the background. The scheduled tasks are the engine; the Cowork chat is where you drive.
+
+> **Example:** "I need a synthesis on the situation with [vendor] over the last few months." Gary pulls from Slack channels, meeting transcripts, daily note action items, and previous project docs — then writes a decision-ready document to your vault that you can share with your team.
+
 ---
 
 ## Tier 3: Level Up (ongoing)
