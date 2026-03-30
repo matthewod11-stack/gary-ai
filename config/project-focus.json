@@ -1,0 +1,14 @@
+{
+  "description": "GitHub repos Gary should track for activity. Edit this to match your repos.",
+  "github_username": "",
+  "repos": [
+    {
+      "repo": "owner/repo-name",
+      "display_name": "My App",
+      "notes": "Main product"
+    }
+  ],
+  "exclude": [
+    "owner/archived-repo"
+  ]
+}

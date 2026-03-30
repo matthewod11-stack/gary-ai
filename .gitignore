@@ -1,0 +1,29 @@
+# State files (runtime, regenerated)
+state/slack-digest.json
+state/briefing-latest.json
+state/last-error.json
+
+# Vault contents (personal data — don't commit)
+vault/*.md
+vault/daily/
+vault/transcripts/
+vault/projects/
+
+# Keep the folder structure
+!vault/.gitkeep
+!vault/daily/.gitkeep
+!vault/transcripts/.gitkeep
+!vault/projects/.gitkeep
+!state/.gitkeep
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
