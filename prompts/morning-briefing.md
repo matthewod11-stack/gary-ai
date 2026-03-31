@@ -73,6 +73,24 @@ Synthesize into a unified list. Deduplicate. Group by urgency:
 - **This Week** — committed work, approaching deadlines
 - **Background** — ongoing items, no immediate pressure
 
+### 2g. Proactive Task Detection
+
+Using data already collected in 2a-2f, apply heuristics to surface items the user might miss:
+
+1. **Implicit asks** — scan email subjects and Slack messages for patterns like "can you", "could you", "when will", "please", "need from you", "thoughts on", "waiting for" directed at the user that weren't already captured as tasks
+2. **At-risk items** — unchecked tasks from yesterday's daily note that have been open 2+ days
+3. **Follow-up gaps** — meetings from yesterday (via calendar data) with no corresponding action items in today's notes
+4. **Aging threads** — Slack threads from `state/slack-digest.json` where user was mentioned >48h ago without a response noted
+
+Output as a `### Proactive Alerts` subsection (max 5 items). Format:
+
+| Source | Signal | Suggested Action |
+|--------|--------|-----------------|
+| Slack #channel | Someone asked about X, 52h ago | Reply or delegate |
+| Email | Vendor contract, 3 days old | Review and respond |
+
+If nothing surfaces: "No proactive alerts." (single line, keep the heading)
+
 ---
 
 ## Step 3: Build the Daily Note
@@ -106,6 +124,9 @@ created: {current ISO timestamp with timezone}
 
 ### Task Agenda
 
+#### Proactive Alerts
+{table from Step 2g, or "No proactive alerts."}
+
 #### Blockers
 - {items where someone is waiting or deadline is today}
 
@@ -125,6 +146,7 @@ created: {current ISO timestamp with timezone}
 
 
 ## Briefing Feedback
+**Auto-score:** {X.X}/5 {trend arrow if previous score available}
 **Overall:** /5
 **Useful:**
 **Noise:**
@@ -146,6 +168,33 @@ Insert before Task Agenda:
 
 ---
 
+## Step 3.5: Auto Quality Score
+
+After building the daily note, compute a quality score based on this briefing run:
+
+**Dimensions (each scored 0.0–1.0, then averaged):**
+
+1. **Source Health:** (data sources that succeeded / total sources configured)
+   - Each source: 1 (ok) or 0 (failed/unavailable)
+
+2. **Completeness:** (sections produced / sections expected for this day-type)
+   - Tue-Thu: 5 sections | Friday: 6 sections | Monday: 5 sections + weekend catch-up
+
+3. **Freshness:** based on Slack digest age
+   - <12h = 1.0, 12-20h = 0.7, 20-26h = 0.3, >26h = 0.0
+
+4. **Task Coverage:** (task sources actually scanned / total task sources from Step 2f)
+
+**Composite score:** Average of all 4 dimensions, mapped to 1-5 scale (multiply by 4, add 1).
+
+**Trend detection:** Read previous `state/briefing-latest.json` BEFORE overwriting. If it has a `quality_score`, compare:
+- Drop of >0.5: add to daily note: `> Briefing quality dropped: {prev} → {current}`
+- Steady or improving: no note needed
+
+Write the auto-score to the `**Auto-score:**` line in the Briefing Feedback section.
+
+---
+
 ## Step 4: Write State File
 
 Write `state/briefing-latest.json`:
@@ -160,6 +209,14 @@ Write `state/briefing-latest.json`:
     "github": {"status": "ok|N/A|error"},
     "weather": {"status": "ok|unavailable"}
   },
+  "quality_score": 0.0,
+  "quality_dimensions": {
+    "source_health": 0.0,
+    "completeness": 0.0,
+    "freshness": 0.0,
+    "task_coverage": 0.0
+  },
+  "previous_score": null,
   "errors": []
 }
 ```

@@ -11,6 +11,8 @@ Gary is a personal AI operations assistant that reads your email, calendar, Slac
 - Today's calendar with prep notes for key meetings
 - Active project status from GitHub
 - Synthesized task list from all sources
+- **Proactive alerts** — implicit asks, at-risk tasks, and aging threads you might miss
+- Auto quality score tracking briefing health over time
 - Weather
 
 **Every evening**, Gary appends an EOD digest:
@@ -18,10 +20,15 @@ Gary is a personal AI operations assistant that reads your email, calendar, Slac
 - Tasks carrying over
 - Tomorrow's first meeting and what to prep
 
+**Every Friday evening**, Gary writes a weekly retrospective:
+- Goals vs. actuals — did you hit what you planned?
+- Task scorecard — completed, carried, dropped
+- Key decisions made and patterns to adjust
+
 **Every Sunday**, Gary writes a weekly look-ahead:
 - Calendar overview for the week
 - Key meetings to prepare for
-- Open tasks prioritized by urgency
+- Open tasks prioritized by urgency (including carry-forward from the retrospective)
 
 **Before every meeting**, Gary posts a context brief:
 - What was discussed last time

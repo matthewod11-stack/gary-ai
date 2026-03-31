@@ -116,9 +116,15 @@ Create these three tasks, each pointing at the `gary-ai` project folder:
 - **Prompt:** `Read prompts/meeting-prep.md and run it.`
 - **What it does:** Checks your calendar, and if a meeting is coming up in the next 30-60 minutes, Gary researches the context — what was discussed last time, what's changed, what you should know walking in — and posts a brief to your Slack prep channel (or writes it to a file).
 
-#### Task 5: Weekly Review (optional)
+#### Task 5: Weekly Retrospective (optional)
+- **Schedule:** Friday evening (e.g., 6:00 PM)
+- **Prompt:** `Read prompts/weekly-retrospective.md and run it.`
+- **What it does:** Reviews the work week — goals vs. actuals, task scorecard, patterns, carry-forward for next week.
+
+#### Task 6: Weekly Look-Ahead (optional)
 - **Schedule:** Sunday evening (e.g., 7:00 PM)
-- **Prompt:** `Read prompts/weekly-review.md and run it.`
+- **Prompt:** `Read prompts/weekly-lookahead.md and run it.`
+- **What it does:** Plans the week ahead — calendar overview, meetings to prep, open tasks. If the retrospective ran Friday, its carry-forward feeds into this automatically.
 
 > **Important:** Your computer needs to be on (not sleeping) for scheduled tasks to run. If you have a desktop Mac or leave your laptop open, this works automatically. Otherwise, you can run them manually when you sit down.
 

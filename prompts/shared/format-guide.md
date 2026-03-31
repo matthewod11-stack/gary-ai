@@ -43,7 +43,18 @@ Read this file for ALL note-producing jobs (morning briefing, week recap, EOD di
 ### Tomorrow Preview
 ```
 
-## Section Order — Weekly Look-Ahead
+## Section Order — Weekly Retrospective (Friday evening)
+
+```
+## Weekly Retrospective
+### Goals vs. Actuals
+### Task Scorecard
+### Key Decisions Made
+### Patterns & Adjustments
+### Carry-Forward
+```
+
+## Section Order — Weekly Look-Ahead (Sunday evening)
 
 ```
 ## Week Theme
