@@ -1,46 +1,29 @@
 # Gary AI
 
-**Your personal AI chief of staff, built on Claude Code.**
+**Your personal AI operations assistant, built on Claude Code.**
 
-Gary is a personal AI operations assistant that reads your email, calendar, Slack, and meeting transcripts — then synthesizes them into daily briefings, action items, and on-demand research. Named after [Gary Walsh](https://veep.fandom.com/wiki/Gary_Walsh) from Veep — the aide who knows what you need before you ask.
+Gary reads your email, calendar, Slack, and meeting transcripts — then synthesizes them into daily briefings, action items, and on-demand research. Named after [Gary Walsh](https://veep.fandom.com/wiki/Gary_Walsh) from Veep — the aide who knows what you need before you ask.
+
+<p align="center">
+  <img src="docs/screenshots/gary-daily-timeline.png" alt="A Day with Gary AI" width="720" />
+</p>
+
+---
 
 ## What Gary Does
 
-**Every morning**, Gary writes you a daily briefing:
-- Who's waiting on you (Slack mentions, unanswered emails)
-- Today's calendar with prep notes for key meetings
-- Active project status from GitHub
-- Synthesized task list from all sources
-- **Proactive alerts** — implicit asks, at-risk tasks, and aging threads you might miss
-- Auto quality score tracking briefing health over time
-- Weather
+| When | What | Details |
+|------|------|---------|
+| Every morning | **Daily Briefing** | Email triage, calendar with prep notes, Slack mentions, GitHub status, proactive alerts, quality score |
+| Before meetings | **Meeting Prep** | Last discussion, what's changed, fires to watch, your action items |
+| All day | **On-Demand Chat** | Ask anything — status checks, research, draft replies, decision-ready docs |
+| Every evening | **EOD Digest** | What got done, carry-forward tasks, tomorrow's first meeting |
+| Friday | **Weekly Retro** | Goals vs. actuals, task scorecard, patterns to adjust |
+| Sunday | **Week Ahead** | Calendar overview, key meetings, prioritized tasks |
 
-**Every evening**, Gary appends an EOD digest:
-- What got done today
-- Tasks carrying over
-- Tomorrow's first meeting and what to prep
-
-**Every Friday evening**, Gary writes a weekly retrospective:
-- Goals vs. actuals — did you hit what you planned?
-- Task scorecard — completed, carried, dropped
-- Key decisions made and patterns to adjust
-
-**Every Sunday**, Gary writes a weekly look-ahead:
-- Calendar overview for the week
-- Key meetings to prepare for
-- Open tasks prioritized by urgency (including carry-forward from the retrospective)
-
-**Before every meeting**, Gary posts a context brief:
-- What was discussed last time
-- What's changed since then
-- Fires and risks to watch for
-- Your action items going in
-
-**On demand**, open a Cowork chat in Claude Code Desktop — this is your always-on surface for talking to Gary:
-- "What's the status on [project]?" — Gary pulls from Slack, transcripts, and past briefings
-- "Research [vendor] across all our channels" — synthesis across email, Slack, and meeting notes into a decision-ready doc
-- "Help me prep for the board meeting" — context from every relevant data source
-- "Draft a response to [person]'s email" — Gary already knows the context
+<p align="center">
+  <img src="docs/screenshots/gary-features.png" alt="Gary AI Features" width="720" />
+</p>
 
 ## How It Works
 
@@ -58,36 +41,61 @@ You ──→ Claude Code Desktop
                 └── Project docs (research, status docs)
 ```
 
-Scheduled tasks run the briefing/digest/weekly prompts automatically. The vault folder is just markdown — point Obsidian at it for mobile sync, or just read the files.
+Scheduled tasks run the briefing/digest/weekly prompts automatically. The vault is just markdown — point Obsidian at it for mobile sync, or just read the files.
 
 ## Get Started
 
-**Time to set up: ~30 minutes**
+**~30 minutes to set up. No coding required.**
 
-Follow the walkthrough in [SETUP.md](SETUP.md). It covers:
+Follow the walkthrough in **[SETUP.md](SETUP.md)**:
 
-1. Installing Claude Code
-2. Connecting your data sources (Gmail, Calendar, Slack)
-3. Running the interactive onboarding (Gary asks you 5 questions, writes your config)
-4. Running your first morning briefing manually
-5. Setting up scheduled tasks so it runs itself
+1. Install Claude Code
+2. Connect your data sources (Gmail, Calendar, Slack)
+3. Run the interactive onboarding (Gary asks 5 questions, writes your config)
+4. Run your first morning briefing
+5. Set up scheduled tasks so it runs itself
 
 ## Requirements
 
 - macOS (Claude Code Desktop runs on Mac today)
-- A Claude account with a Pro or Team plan
+- Claude account with a Pro or Team plan
 - Gmail / Google Calendar account
 - Slack workspace (optional but recommended)
 - GitHub account (optional)
 
 ## What Makes This Different
 
-Most AI assistant setups are demos. Gary is a working pattern extracted from a production personal assistant that's been running daily since March 2026. The prompts, error handling, and data synthesis patterns have been iterated on through real use.
+Most AI assistant setups are demos. Gary is a working pattern extracted from a production personal assistant that's been running daily since March 2026. The prompts, error handling, and data synthesis patterns have been iterated through real use.
 
-The key insight: **scheduled tasks build context, context makes on-demand work powerful.** Your morning briefing isn't just a summary — it's the foundation that lets you open a Cowork chat and say "research the situation with [vendor]" and get a decision-ready doc with pricing comps and a recommendation in 10 minutes, because Gary already knows what's been discussed in Slack, what meetings happened, and what action items are open.
+The key insight: **scheduled tasks build context, and context makes on-demand work powerful.** Your morning briefing isn't just a summary — it's the foundation that lets you say "research the situation with [vendor]" and get a decision-ready doc in 10 minutes, because Gary already knows what's been discussed in Slack, what meetings happened, and what action items are open.
 
-The Cowork chat is Gary's front door. The scheduled tasks are the engine running in the background. Together, they compound — every daily note, transcript, and project doc makes Gary's answers richer.
+## Tech Stack
+
+| Component | Role |
+|-----------|------|
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | Runtime — Desktop app or CLI |
+| MCP Connectors | Gmail, Google Calendar, Slack integration |
+| Markdown Vault | Local knowledge base (daily notes, transcripts, project docs) |
+| Scheduled Tasks | Automated briefings, digests, and weekly reports |
+| Prompt Engineering | Structured prompts with shared modules and error handling |
+
+## Project Structure
+
+```
+gary-ai/
+├── prompts/           # Scheduled task prompts (briefing, digest, retro, prep)
+│   └── shared/        # Shared prompt modules (error handling, formatting)
+├── config/            # Configuration files
+├── vault/             # Your knowledge base (gitignored — personal data)
+│   ├── daily/         # Archived daily + weekly notes
+│   ├── transcripts/   # Meeting transcripts
+│   └── projects/      # Project docs and research
+├── state/             # Runtime state (gitignored)
+├── SETUP.md           # Step-by-step setup guide
+├── SOUL.md            # Gary's personality (customize this)
+└── IDENTITY.md        # Gary's name and vibe (customize this)
+```
 
 ## License
 
-MIT
+[MIT](LICENSE)
