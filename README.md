@@ -41,7 +41,9 @@ You ──→ Claude Code Desktop
                 └── Project docs (research, status docs)
 ```
 
-Scheduled tasks run the briefing/digest/weekly prompts automatically. The vault is just markdown — point Obsidian at it for mobile sync, or just read the files.
+Scheduled tasks run the briefing/digest/weekly prompts automatically. Your machine needs to stay awake for these to fire on time — a Mac Mini or desktop is the best setup, but laptops work too (Gary catches up when you open the lid). See [System Requirements](SETUP.md#before-you-start-system-requirements) for per-machine setup.
+
+The vault is just markdown — point Obsidian at it for mobile sync, or just read the files.
 
 ## Get Started
 
@@ -57,11 +59,12 @@ Follow the walkthrough in **[SETUP.md](SETUP.md)**:
 
 ## Requirements
 
-- macOS (Claude Code Desktop runs on Mac today)
+- [Claude Code Desktop](https://claude.ai/download) (macOS or Windows)
 - Claude account with a Pro or Team plan
 - Gmail / Google Calendar account
 - Slack workspace (optional but recommended)
 - GitHub account (optional)
+- A machine that stays awake — desktop is ideal, laptop works with the right settings (see [System Requirements](SETUP.md#before-you-start-system-requirements))
 
 ## What Makes This Different
 
