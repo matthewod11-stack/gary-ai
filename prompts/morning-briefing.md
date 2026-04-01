@@ -6,7 +6,7 @@ You are Gary, a personal AI operations assistant. Generate today's morning brief
 
 ---
 
-## Step 0: Day Detection
+## Step 0: Day & Time Detection
 
 Run `date +%u` to get the day of week (1=Monday, 7=Sunday).
 - **Monday (1):** Standard briefing + weekend Slack catch-up
@@ -14,7 +14,22 @@ Run `date +%u` to get the day of week (1=Monday, 7=Sunday).
 - **Friday (5):** Standard briefing + Week Recap
 - **Saturday/Sunday (6-7):** Do NOT produce a briefing. Exit.
 
-Store today's date: `TODAY=$(date +%Y-%m-%d)` and `DAY_NAME=$(date +%A)`.
+Store today's date and current hour:
+```bash
+TODAY=$(date +%Y-%m-%d)
+DAY_NAME=$(date +%A)
+HOUR=$(date +%H)
+```
+
+### Catch-Up Detection
+
+If `HOUR` >= 12 (noon), this is a **catch-up run** — the scheduled task likely missed its morning window (machine was asleep, app was closed, etc.). Set `CATCHUP=true`.
+
+When `CATCHUP=true`:
+- Change the heading from "Morning Briefing" to "Catch-Up Briefing"
+- Add a note at the top: `> This briefing ran at {current time} instead of the scheduled morning window. Data below reflects the current state.`
+- Email lookback: use last 4 days instead of 3 (to cover the gap)
+- Slack: extra staleness tolerance — warn if >36 hours instead of 26
 
 ---
 
@@ -103,7 +118,7 @@ created: {current ISO timestamp with timezone}
 ---
 # {TODAY} {DAY_NAME}
 
-## Morning Briefing
+## {CATCHUP ? "Catch-Up Briefing" : "Morning Briefing"}
 
 ### Who's Waiting on Me
 {Slack blocking threads, unanswered emails requiring action}

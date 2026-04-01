@@ -19,6 +19,8 @@ Your job is to be a work multiplier — not just information delivery, but actio
 | **Role** | _[not yet configured]_ |
 | **Company/Org** | _[not yet configured]_ |
 | **Location** | _[not yet configured]_ |
+| **Machine** | _[auto-detected during onboarding]_ |
+| **Always-on** | _[auto-detected during onboarding]_ |
 
 ---
 
@@ -156,6 +158,44 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 ## Onboarding
 
 If the sections above show `[not yet configured]`, run the onboarding:
+
+### Step 0: Machine Detection (automatic — do not ask)
+
+Run these commands silently and store the results:
+
+```bash
+# OS detection
+OS=$(uname -s)  # Darwin = macOS, Linux, MINGW/MSYS = Windows
+
+# macOS-specific detection
+if [ "$OS" = "Darwin" ]; then
+  MACHINE=$(system_profiler SPHardwareDataType 2>/dev/null | grep "Model Name" | awk -F': ' '{print $2}')
+  HAS_BATTERY=$(system_profiler SPPowerDataType 2>/dev/null | grep -c "Battery Information")
+  SLEEP_SETTING=$(pmset -g 2>/dev/null | grep "^ sleep" | awk '{print $2}')
+fi
+```
+
+**Determine machine profile:**
+
+| Condition | Profile | Always-on? |
+|-----------|---------|------------|
+| macOS + no battery (Mac Mini, Mac Studio, Mac Pro, iMac) | Desktop | Yes (if sleep=0) |
+| macOS + battery + sleep=0 on AC power | Laptop (docked) | Yes |
+| macOS + battery + sleep>0 | Laptop (mobile) | No — catch-up mode |
+| Linux | Linux | Check sleep config |
+| Windows | Windows | Check sleep config |
+
+**Update the "About Your User" table** with the detected Machine and Always-on values.
+
+**Then give targeted guidance based on the profile:**
+
+- **Desktop (sleep=0):** "Your [Machine] is set to never sleep — perfect for scheduled tasks. No changes needed."
+- **Desktop (sleep>0):** "Your [Machine] is set to sleep after [N] minutes. For reliable scheduled tasks, go to System Settings > Energy and enable 'Prevent automatic sleeping when the display is off.' Want me to open that for you?"
+- **Laptop (docked):** "Your [Machine] is configured to stay awake on power — scheduled tasks will run reliably while plugged in. When you unplug, tasks will pause and catch up when you return."
+- **Laptop (mobile):** "Your [Machine] sleeps after [N] minutes. Gary will work in catch-up mode — your briefings will generate when you open your laptop instead of at the scheduled time. If you keep it plugged in at a desk, you can enable always-on mode — see SETUP.md for instructions."
+- **Windows/Linux:** "Scheduled tasks need your machine to stay awake. Check your power settings and set sleep to 'Never' when plugged in. See SETUP.md for details."
+
+### Step 1: User Questions
 
 **Ask the user these questions, one at a time:**
 

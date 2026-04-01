@@ -25,6 +25,17 @@ On any job failure, write to `state/last-error.json`:
 }
 ```
 
+## Catch-Up Mode Adjustments
+
+When the morning briefing detects it's running after noon (catch-up mode), relax staleness thresholds:
+
+| Source | Normal Max Staleness | Catch-Up Max Staleness |
+|--------|---------------------|----------------------|
+| Slack digest | 26 hours | 36 hours |
+| Email lookback | 3 days | 4 days |
+
+This prevents false "stale" warnings when the machine was simply asleep. The briefing header will already note that this is a catch-up run.
+
 ## Reliability Rules
 
 - If a data source fails, note it in the briefing and continue with other sources

@@ -4,6 +4,81 @@ This guide gets you from zero to a working personal AI assistant in about 30 min
 
 ---
 
+## Before You Start: System Requirements
+
+Gary runs as a set of **scheduled tasks** on your computer via Claude Code Desktop. These tasks run in the background — checking your email, calendar, and Slack, then writing daily briefings to your vault. For this to work reliably, **your machine needs to stay awake.**
+
+This isn't a server or a cloud service. Gary runs on your computer, using your accounts, with your data staying local. That's the point — but it means your machine matters.
+
+### What machine are you on?
+
+| Machine | Works? | What to do |
+|---------|--------|------------|
+| **Mac Mini / Mac Studio / Mac Pro / iMac** | Best setup | Turn off sleep in System Settings. You're done. |
+| **MacBook (at a desk, plugged in)** | Works great | Enable clamshell mode + prevent sleep on power. See below. |
+| **MacBook (mobile, unplugged)** | Partial | Tasks run when awake, catch up when you return. See below. |
+| **Windows desktop** | Works | Claude Desktop runs on Windows. Prevent sleep in Power Settings. |
+| **Windows laptop** | Partial | Same as MacBook mobile — tasks run when awake. |
+| **Linux** | Varies | Claude Code CLI works. Scheduled tasks require Desktop app. |
+
+### Mac Desktop Setup (Mac Mini, iMac, Mac Studio, Mac Pro)
+
+Go to **System Settings > Energy** and set:
+- **"Prevent automatic sleeping when the display is off"** → ON
+- **Display sleep** → your preference (display can sleep, the machine stays awake)
+
+Verify with this terminal command:
+```bash
+pmset -g | grep "^ sleep"
+# Should show: sleep 0
+```
+
+### MacBook Setup (Plugged In at a Desk)
+
+MacBooks can run Gary reliably if they stay plugged in. You can close the lid (clamshell mode) — the machine keeps running.
+
+**Step 1:** Go to **System Settings > Energy > Options** and set:
+- **"Prevent automatic sleeping when the display is off and the power adapter is connected"** → ON
+
+**Step 2:** If you use an external monitor, just close the lid. If no external monitor, keep the lid open or slightly cracked.
+
+**Step 3:** Verify:
+```bash
+pmset -g | grep "^ sleep"
+# Should show: sleep 0 (when on power)
+```
+
+> **Important:** When you unplug and take your MacBook mobile, scheduled tasks will pause. When you return and plug back in, Claude Desktop will catch up — it runs ONE catch-up for the most recently missed scheduled time (within the last 7 days). So your morning briefing still happens, just delayed.
+
+### MacBook / Laptop (Mobile Use)
+
+If you primarily use a laptop without leaving it plugged in, Gary works in **catch-up mode:**
+
+- Scheduled tasks only run while your machine is awake
+- When you open your laptop, Claude Desktop detects missed tasks and runs the most recent one
+- Your morning briefing might arrive at 10 AM instead of 7 AM — but it still arrives
+- The briefing will note that it's a catch-up run so the context is clear
+
+This is a totally valid way to use Gary. You won't get perfectly timed briefings, but you'll still get the synthesis and action items when you sit down to work.
+
+### Windows Setup
+
+Claude Desktop runs on Windows. For scheduled tasks:
+
+1. Go to **Settings > System > Power & Sleep**
+2. Set "When plugged in, turn off my screen after" → your preference
+3. Set "When plugged in, put my device to sleep after" → **Never**
+
+> **Note:** Windows laptops on battery will still sleep. Same catch-up behavior applies — tasks run when you return.
+
+### What Happens When Tasks Miss Their Schedule
+
+Claude Desktop has built-in catch-up: when the app starts (or the machine wakes), it checks the last 7 days of scheduled tasks and runs ONE catch-up for each task's most recently missed time. Gary's prompts are also aware of late runs — a briefing generated at 2 PM will adjust its greeting and note that it's a catch-up.
+
+**Bottom line:** An always-on desktop is the best experience. A plugged-in laptop is nearly as good. A mobile laptop still works — you just get your briefings when you sit down instead of when you wake up.
+
+---
+
 ## Tier 1: Connect & Run (20 minutes)
 
 ### Step 1: Install Claude Code
@@ -126,7 +201,7 @@ Create these three tasks, each pointing at the `gary-ai` project folder:
 - **Prompt:** `Read prompts/weekly-lookahead.md and run it.`
 - **What it does:** Plans the week ahead — calendar overview, meetings to prep, open tasks. If the retrospective ran Friday, its carry-forward feeds into this automatically.
 
-> **Important:** Your computer needs to be on (not sleeping) for scheduled tasks to run. If you have a desktop Mac or leave your laptop open, this works automatically. Otherwise, you can run them manually when you sit down.
+> **Important:** Your computer needs to stay awake for scheduled tasks to run. See [System Requirements](#before-you-start-system-requirements) above for setup instructions specific to your machine. If you're on a laptop, tasks will catch up when you return.
 
 ### Step 7: Verify the Loop
 
