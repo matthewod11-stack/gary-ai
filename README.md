@@ -18,6 +18,8 @@ Gary reads your email, calendar, Slack, and meeting transcripts — then synthes
 | Before meetings | **Meeting Prep** | Last discussion, what's changed, fires to watch, your action items |
 | All day | **On-Demand Chat** | Ask anything — status checks, research, draft replies, decision-ready docs |
 | Every evening | **EOD Digest** | What got done, carry-forward tasks, tomorrow's first meeting |
+| Every night | **Transcript Sync** | Compiles meeting transcripts into a team operational status doc with change detection |
+| Every night | **Knowledge Compile** | Synthesizes vault data into a queryable knowledge base — entities, people, situations, concepts |
 | Friday | **Weekly Retro** | Goals vs. actuals, task scorecard, patterns to adjust |
 | Sunday | **Week Ahead** | Calendar overview, key meetings, prioritized tasks |
 
@@ -38,7 +40,8 @@ You ──→ Claude Code Desktop
            └── Vault folder (local markdown files)
                 ├── Daily notes (briefings + EOD digests)
                 ├── Transcripts (meeting notes you drop here)
-                └── Project docs (research, status docs)
+                ├── Project docs (research, status docs)
+                └── Knowledge base (compiled entities, people, situations)
 ```
 
 Scheduled tasks run the briefing/digest/weekly prompts automatically. Your machine needs to stay awake for these to fire on time — a Mac Mini or desktop is the best setup, but laptops work too (Gary catches up when you open the lid). See [System Requirements](SETUP.md#before-you-start-system-requirements) for per-machine setup.
@@ -72,6 +75,8 @@ Most AI assistant setups are demos. Gary is a working pattern extracted from a p
 
 The key insight: **scheduled tasks build context, and context makes on-demand work powerful.** Your morning briefing isn't just a summary — it's the foundation that lets you say "research the situation with [vendor]" and get a decision-ready doc in 10 minutes, because Gary already knows what's been discussed in Slack, what meetings happened, and what action items are open.
 
+The knowledge base takes this further — nightly compilation synthesizes your transcripts, notes, and project docs into structured entries (entities, people, situations, concepts) that Gary queries directly. No RAG pipeline, no vector DB. Just Claude-maintained markdown with cross-references. Inspired by [Karpathy's approach](https://x.com/karpathy/status/1936199801097752726) to LLM-native knowledge management.
+
 ## Tech Stack
 
 | Component | Role |
@@ -81,6 +86,7 @@ The key insight: **scheduled tasks build context, and context makes on-demand wo
 | Markdown Vault | Local knowledge base (daily notes, transcripts, project docs) |
 | Scheduled Tasks | Automated briefings, digests, and weekly reports |
 | Prompt Engineering | Structured prompts with shared modules and error handling |
+| Knowledge Base | LLM-compiled entities, people, situations, and concepts from vault data |
 
 ## Project Structure
 
@@ -89,10 +95,12 @@ gary-ai/
 ├── prompts/           # Scheduled task prompts (briefing, digest, retro, prep)
 │   └── shared/        # Shared prompt modules (error handling, formatting)
 ├── config/            # Configuration files
+├── docs/              # Design docs and screenshots
 ├── vault/             # Your knowledge base (gitignored — personal data)
 │   ├── daily/         # Archived daily + weekly notes
 │   ├── transcripts/   # Meeting transcripts
-│   └── projects/      # Project docs and research
+│   ├── projects/      # Project docs and research
+│   └── knowledge/     # LLM-compiled knowledge base (entities, people, situations, concepts)
 ├── state/             # Runtime state (gitignored)
 ├── SETUP.md           # Step-by-step setup guide
 ├── SOUL.md            # Gary's personality (customize this)
