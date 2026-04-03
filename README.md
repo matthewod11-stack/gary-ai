@@ -1,6 +1,6 @@
 # Gary AI
 
-**Your personal AI operations assistant, built on Claude Code.**
+**Your personal AI operations assistant, built for the Claude Desktop app.**
 
 Gary reads your email, calendar, Slack, and meeting transcripts — then synthesizes them into daily briefings, action items, and on-demand research. Named after [Gary Walsh](https://veep.fandom.com/wiki/Gary_Walsh) from Veep — the aide who knows what you need before you ask.
 
@@ -29,10 +29,10 @@ Gary reads your email, calendar, Slack, and meeting transcripts — then synthes
 
 ## How It Works
 
-Gary runs in [Claude Code Cowork](https://docs.anthropic.com/en/docs/claude-code) — the desktop chat interface. Open Cowork in the gary-ai folder and you're talking to Gary. It connects to your data sources via built-in MCP connectors — no API keys to manage, no custom code to write.
+Gary runs in the [Claude Desktop app](https://claude.ai/download). Open a Cowork chat in the gary-ai folder and you're talking to Gary. It connects to your data sources via built-in MCP connectors — no API keys to manage, no custom code to write.
 
 ```
-You ──→ Claude Code Cowork (chat in the gary-ai folder)
+You ──→ Claude Desktop (Cowork chat in the gary-ai folder)
            ├── Gmail (MCP connector)
            ├── Google Calendar (MCP connector)
            ├── Slack (MCP connector)
@@ -54,15 +54,15 @@ The vault is just markdown — point Obsidian at it for mobile sync, or just rea
 
 Follow the walkthrough in **[SETUP.md](SETUP.md)**:
 
-1. Download [Claude Code Desktop](https://claude.ai/download) — that's the only install
+1. Download the [Claude Desktop app](https://claude.ai/download) — that's the only install
 2. Connect your data sources (Gmail, Calendar, Slack) in Settings
-3. Open this project folder in Claude Code and start a chat — Gary walks you through onboarding (5 questions, writes your config)
+3. Open this project folder in the app and start a chat — Gary walks you through onboarding (5 questions, writes your config)
 4. Run your first morning briefing
 5. Set up scheduled tasks so it runs itself
 
 ## Requirements
 
-- [Claude Code Desktop](https://claude.ai/download) (macOS or Windows) — you'll use Cowork (the chat mode)
+- [Claude Desktop app](https://claude.ai/download) (macOS or Windows)
 - Claude account with a Pro or Team plan
 - Gmail / Google Calendar account
 - Slack workspace (optional but recommended)
@@ -81,7 +81,7 @@ The knowledge base takes this further — nightly compilation synthesizes your t
 
 | Component | Role |
 |-----------|------|
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | Runtime — Desktop app or CLI |
+| [Claude Desktop](https://claude.ai/download) | Runtime — Cowork chat interface with MCP connectors |
 | MCP Connectors | Gmail, Google Calendar, Slack integration |
 | Markdown Vault | Local knowledge base (daily notes, transcripts, project docs) |
 | Scheduled Tasks | Automated briefings, digests, and weekly reports |
