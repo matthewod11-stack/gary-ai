@@ -16,7 +16,7 @@ Gary reads your email, calendar, Slack, and meeting transcripts — then synthes
 |------|------|---------|
 | Every morning | **Daily Briefing** | Email triage, calendar with prep notes, Slack mentions, GitHub status, proactive alerts, quality score |
 | Before meetings | **Meeting Prep** | Last discussion, what's changed, fires to watch, your action items |
-| All day | **On-Demand Chat** | Ask anything — status checks, research, draft replies, decision-ready docs |
+| All day | **On-Demand Chat** | Open Cowork in the gary-ai folder and ask anything — status checks, research, draft replies, decision-ready docs |
 | Every evening | **EOD Digest** | What got done, carry-forward tasks, tomorrow's first meeting |
 | Every night | **Transcript Sync** | Compiles meeting transcripts into a team operational status doc with change detection |
 | Every night | **Knowledge Compile** | Synthesizes vault data into a queryable knowledge base — entities, people, situations, concepts |
@@ -29,10 +29,10 @@ Gary reads your email, calendar, Slack, and meeting transcripts — then synthes
 
 ## How It Works
 
-Gary runs on [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (Desktop or CLI). It connects to your data sources via built-in MCP connectors — no API keys to manage, no custom code to write.
+Gary runs in [Claude Code Cowork](https://docs.anthropic.com/en/docs/claude-code) — the desktop chat interface. Open Cowork in the gary-ai folder and you're talking to Gary. It connects to your data sources via built-in MCP connectors — no API keys to manage, no custom code to write.
 
 ```
-You ──→ Claude Code Desktop
+You ──→ Claude Code Cowork (chat in the gary-ai folder)
            ├── Gmail (MCP connector)
            ├── Google Calendar (MCP connector)
            ├── Slack (MCP connector)
@@ -62,7 +62,7 @@ Follow the walkthrough in **[SETUP.md](SETUP.md)**:
 
 ## Requirements
 
-- [Claude Code Desktop](https://claude.ai/download) (macOS or Windows)
+- [Claude Code Desktop](https://claude.ai/download) (macOS or Windows) — you'll use Cowork (the chat mode)
 - Claude account with a Pro or Team plan
 - Gmail / Google Calendar account
 - Slack workspace (optional but recommended)
