@@ -94,7 +94,14 @@ vault/
 ├── YYYY-MM-DD.md          <- Today's daily note (vault root)
 ├── daily/                 <- Archived daily + weekly notes
 ├── transcripts/           <- Meeting transcripts (drop files here)
-└── projects/              <- Project docs, research, status docs
+├── projects/              <- Project docs, research, status docs
+└── knowledge/             <- LLM-compiled knowledge base (see docs/knowledge-base-design.md)
+    ├── index.md           <- Master index (auto-generated)
+    ├── entities/          <- Companies, products, services
+    ├── people/            <- Individuals + aliases
+    ├── situations/        <- Active threads with timelines
+    ├── concepts/          <- Durable knowledge
+    └── archived/          <- Dormant entries
 ```
 
 ---
@@ -131,6 +138,7 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 | `prompts/weekly-retrospective.md` | Weekly retrospective (goals vs actuals) | Friday evening |
 | `prompts/meeting-prep.md` | Pre-meeting context brief | Every 30 min during work hours |
 | `prompts/transcript-sync.md` | Transcript -> team-status.md | Daily, late evening |
+| `prompts/knowledge-compile.md` | Knowledge base compilation + lint | Daily, after transcript-sync |
 
 ---
 
@@ -142,6 +150,7 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 | `state/slack-digest.json` | Slack prefetch output |
 | `state/last-error.json` | Most recent job failure |
 | `state/transcript-sync-state.json` | Transcript hash |
+| `state/knowledge-compile-state.json` | Last compilation run metadata + lint |
 
 ---
 

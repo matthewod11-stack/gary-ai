@@ -13,6 +13,7 @@ Every task must handle data source failures gracefully. Never let a single sourc
 | **Weather** | `curl` timeout >5 seconds | Write "Weather: unavailable" |
 | **Transcripts** | `vault/transcripts/` empty | Skip transcript references in meeting prep |
 | **Transcript sync** | `state/transcript-sync-state.json` missing or stale | Skip synthesis, note "Transcript sync: not run" | N/A |
+| **Knowledge base** | `vault/knowledge/index.md` missing or empty | Skip knowledge enrichment. Note "Knowledge: unavailable" in Data Sources | N/A (compiled nightly) |
 
 ## Error State File
 
