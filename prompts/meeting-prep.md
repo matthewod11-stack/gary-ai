@@ -51,6 +51,18 @@ If the meeting has attendees the user hasn't met before:
 - Company: what they do, size, relevance
 - Any prior mentions in Slack or transcripts
 
+### 1f. Knowledge Base Context
+
+Check if the knowledge base has compiled entries relevant to this meeting:
+
+```bash
+cat vault/knowledge/index.md 2>/dev/null
+```
+
+If the index exists, scan for entries matching the meeting topic or attendees. Read matching entries for Key Facts, Current State, and Open Questions. Weave this into the prep brief.
+
+If the index doesn't exist or has no matches, skip silently.
+
 ---
 
 ## Step 2: Generate the Prep Note

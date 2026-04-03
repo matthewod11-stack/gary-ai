@@ -106,6 +106,23 @@ Output as a `### Proactive Alerts` subsection (max 5 items). Format:
 
 If nothing surfaces: "No proactive alerts." (single line, keep the heading)
 
+### 2h. Knowledge Base Context
+
+Check the knowledge base for entries with upcoming deadlines or recent updates:
+
+```bash
+cat vault/knowledge/index.md 2>/dev/null
+```
+
+If the index exists:
+1. Scan for situations with deadline keywords matching today or this week
+2. Cross-reference today's calendar events against knowledge entries
+3. Weave context into existing sections (calendar enrichment, task links)
+
+Do NOT add a separate "Knowledge Updates" section.
+
+If the index doesn't exist or is empty, skip silently.
+
 ---
 
 ## Step 3: Build the Daily Note
@@ -152,7 +169,7 @@ created: {current ISO timestamp with timezone}
 - {ongoing items, no immediate pressure}
 
 ### Data Sources
-> Checked: {account} ({N} unread) | Slack: {fresh/stale} | Calendar: {ok/error} | GitHub: {ok/N/A} | Weather: {ok/unavailable}
+> Checked: {account} ({N} unread) | Slack: {fresh/stale} | Calendar: {ok/error} | GitHub: {ok/N/A} | Weather: {ok/unavailable} | Knowledge: {N entries, last compiled {date}}
 
 ## EOD Digest
 (appended in the evening)
