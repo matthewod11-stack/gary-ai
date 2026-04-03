@@ -12,6 +12,7 @@ Every task must handle data source failures gracefully. Never let a single sourc
 | **GitHub** | `gh api user` timeout or error | Write "GitHub unavailable" in Projects section |
 | **Weather** | `curl` timeout >5 seconds | Write "Weather: unavailable" |
 | **Transcripts** | `vault/transcripts/` empty | Skip transcript references in meeting prep |
+| **Transcript sync** | `state/transcript-sync-state.json` missing or stale | Skip synthesis, note "Transcript sync: not run" | N/A |
 
 ## Error State File
 

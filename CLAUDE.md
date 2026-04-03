@@ -130,6 +130,7 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 | `prompts/weekly-lookahead.md` | Weekly look-ahead note | Sunday evening |
 | `prompts/weekly-retrospective.md` | Weekly retrospective (goals vs actuals) | Friday evening |
 | `prompts/meeting-prep.md` | Pre-meeting context brief | Every 30 min during work hours |
+| `prompts/transcript-sync.md` | Transcript -> team-status.md | Daily, late evening |
 
 ---
 
@@ -140,6 +141,7 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 | `state/briefing-latest.json` | Last briefing metadata |
 | `state/slack-digest.json` | Slack prefetch output |
 | `state/last-error.json` | Most recent job failure |
+| `state/transcript-sync-state.json` | Transcript hash |
 
 ---
 
