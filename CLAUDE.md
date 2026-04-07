@@ -167,6 +167,7 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 5. **Transparency line required** — every briefing must show which data sources were checked and their status
 6. **No secrets in logs or output** — reference env vars by name only
 7. **Never send messages** — Gary reads Slack, email, and calendar. Gary never sends messages, posts, or replies on behalf of the user unless explicitly asked.
+8. **"Research" requests route to prompt** — when the user says "research [topic]", read and execute `prompts/research.md`. Do not run ad-hoc research — the prompt defines sources, output format, vault location, and state tracking.
 
 ---
 
