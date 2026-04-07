@@ -52,10 +52,21 @@ Read modified project docs for new facts, status changes, or entity references.
 
 Read `state/slack-digest.json` if it exists. Extract only entity/situation mentions — names of companies, people, projects, or active threads that reference known knowledge entries or suggest new ones. Ignore routine chatter, scheduling, and social messages.
 
+### 1e. Research Entries (`vault/knowledge/research/`)
+
+```bash
+find vault/knowledge/research/ -name "*.md" -newer "$REFERENCE_FILE" -type f 2>/dev/null
+```
+
+Research entries are both output (from on-demand research) and input (for indexing and cross-linking). For each modified research entry:
+- Cross-link with related entities, people, and situations mentioned in the entry
+- Add to the master index under a new **Research** section
+- Do NOT modify the research entry content — only update `related` links in frontmatter if cross-references are found
+
 ### Sources NOT Scanned
 
 - `vault/daily/` — archived daily notes, already processed when current
-- `vault/knowledge/` — output folder, never input
+- `vault/knowledge/` — output folder, never input (exception: `research/` entries are scanned for cross-linking)
 
 ### Early Exit
 
@@ -169,7 +180,7 @@ After all entries are updated/created, regenerate all index files.
 
 ### 3a. Folder Indexes
 
-For each type folder (`entities/`, `people/`, `situations/`, `concepts/`, `archived/`):
+For each type folder (`entities/`, `people/`, `situations/`, `concepts/`, `research/`, `archived/`):
 1. List all `.md` files (excluding `index.md`)
 2. Read each entry's summary paragraph and frontmatter
 3. Write folder `index.md`: `- **entry-name** -- Summary sentence. [domain-tags]`

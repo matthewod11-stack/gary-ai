@@ -121,6 +121,7 @@ Open **Claude Code Desktop** (or run `claude` in terminal). Go to **Settings > M
 
 **Optional:**
 - **GitHub** — If you use GitHub, install the `gh` CLI: `brew install gh && gh auth login`
+- **Exa Web Search** — Enables on-demand topic research across the web, Reddit, and social media. Click "Add", search for Exa, and connect. This powers the `research` command — say "research [topic] — [why]" to get a multi-source synthesis written to your knowledge base.
 
 ### Step 4: Run the Onboarding
 

@@ -21,7 +21,9 @@ Gary reads your email, calendar, Slack, and meeting transcripts — then synthes
 | Every night | **Transcript Sync** | Compiles meeting transcripts into a team operational status doc with change detection |
 | Every night | **Knowledge Compile** | Synthesizes vault data into a queryable knowledge base — entities, people, situations, concepts |
 | Friday | **Weekly Retro** | Goals vs. actuals, task scorecard, patterns to adjust |
+| On demand | **Topic Research** | Say "research [topic] — [why]" and get a multi-source synthesis (web, Reddit, Hacker News) written to your knowledge base |
 | Sunday | **Week Ahead** | Calendar overview, key meetings, prioritized tasks |
+| Sunday | **Research Refresh** | Automatically refreshes research topics that are 30+ days old, archives stale topics at 90 days |
 
 <p align="center">
   <img src="docs/screenshots/gary-features.png" alt="Gary AI Features" width="720" />
@@ -37,11 +39,12 @@ You ──→ Claude Desktop (Cowork chat in the gary-ai folder)
            ├── Google Calendar (MCP connector)
            ├── Slack (MCP connector)
            ├── GitHub CLI (optional)
+           ├── Exa Web Search (optional — powers topic research)
            └── Vault folder (local markdown files)
                 ├── Daily notes (briefings + EOD digests)
                 ├── Transcripts (meeting notes you drop here)
                 ├── Project docs (research, status docs)
-                └── Knowledge base (compiled entities, people, situations)
+                └── Knowledge base (entities, people, situations, research)
 ```
 
 Scheduled tasks run the briefing/digest/weekly prompts automatically. Your machine needs to stay awake for these to fire on time — a Mac Mini or desktop is the best setup, but laptops work too (Gary catches up when you open the lid). See [System Requirements](SETUP.md#before-you-start-system-requirements) for per-machine setup.
@@ -67,6 +70,7 @@ Follow the walkthrough in **[SETUP.md](SETUP.md)**:
 - Gmail / Google Calendar account
 - Slack workspace (optional but recommended)
 - GitHub account (optional)
+- Exa web search MCP connector (optional — enables topic research)
 - A machine that stays awake — desktop is ideal, laptop works with the right settings (see [System Requirements](SETUP.md#before-you-start-system-requirements))
 
 ## What Makes This Different
@@ -100,7 +104,7 @@ gary-ai/
 │   ├── daily/         # Archived daily + weekly notes
 │   ├── transcripts/   # Meeting transcripts
 │   ├── projects/      # Project docs and research
-│   └── knowledge/     # LLM-compiled knowledge base (entities, people, situations, concepts)
+│   └── knowledge/     # LLM-compiled knowledge base (entities, people, situations, concepts, research)
 ├── state/             # Runtime state (gitignored)
 ├── SETUP.md           # Step-by-step setup guide
 ├── SOUL.md            # Gary's personality (customize this)

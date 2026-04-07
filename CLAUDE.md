@@ -101,6 +101,7 @@ vault/
     ├── people/            <- Individuals + aliases
     ├── situations/        <- Active threads with timelines
     ├── concepts/          <- Durable knowledge
+    ├── research/          <- On-demand topic research (auto-refreshed weekly)
     └── archived/          <- Dormant entries
 ```
 
@@ -139,6 +140,8 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 | `prompts/meeting-prep.md` | Pre-meeting context brief | Every 30 min during work hours |
 | `prompts/transcript-sync.md` | Transcript -> team-status.md | Daily, late evening |
 | `prompts/knowledge-compile.md` | Knowledge base compilation + lint | Daily, after transcript-sync |
+| `prompts/research.md` | On-demand topic research → vault + inline summary | On-demand |
+| `prompts/research-refresh.md` | Refresh active research topics | Weekly, Sunday evening |
 
 ---
 
@@ -151,6 +154,7 @@ If not configured, meeting prep notes are written to `vault/projects/meeting-pre
 | `state/last-error.json` | Most recent job failure |
 | `state/transcript-sync-state.json` | Transcript hash |
 | `state/knowledge-compile-state.json` | Last compilation run metadata + lint |
+| `state/research-topics.json` | Active research topic registry |
 
 ---
 
