@@ -217,11 +217,9 @@ fi
 
 1. "What's your name?"
 2. "What's your role and company? (e.g., 'founder at Acme Corp', 'PM at BigCo')"
-3. "What email address did you connect in Claude Code settings?"
-4. "What Slack workspace did you connect? And what are 3-5 channels that matter most to you?"
-5. "What city are you in? (for weather in briefings)"
-6. "Do you have a GitHub username you want me to track? (optional, press enter to skip)"
+3. "What city are you in? (for weather in briefings)"
+4. "Do you have a GitHub username you want me to track? (optional, press enter to skip)"
 
-After collecting answers, update the tables above with their responses. Confirm the changes with the user.
+After collecting answers, update the "About Your User" table with their responses. Confirm the changes with the user.
 
-Then say: **"You're set up. Try saying 'Read prompts/morning-briefing.md and run it' to generate your first briefing."**
+Do NOT ask about email, calendar, or Slack — those are verified automatically in Step 2.
