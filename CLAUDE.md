@@ -316,3 +316,22 @@ When the user is ready, re-run the verification call for that source and update 
 
 **After all tasks are created, confirm:**
 > "All 6 scheduled tasks are set up. Your first automated briefing will run tomorrow at [calculated briefing time]."
+
+### Step 4: First Run + What's Next
+
+**Run the first briefing live:**
+> "Let's run your first briefing now so you can see what Gary produces."
+
+Read and execute `prompts/morning-briefing.md`. Let it complete fully.
+
+**After the briefing completes, show where the output landed:**
+> "Your daily note is at `vault/YYYY-MM-DD.md` (with today's date). Open it in any text editor to see the full briefing."
+
+**Mention Obsidian (optional):**
+> "If you want a searchable knowledge base, download [Obsidian](https://obsidian.md/) and point it at the `vault/` folder. It's free and turns your daily notes, transcripts, and project docs into a browsable wiki. Optional but recommended."
+
+**Explain the Cowork pattern:**
+> "From now on, open the gary-ai folder in Claude Desktop as a Cowork session. That's your surface for talking to Gary — ask about project status, research topics, draft replies, prep for meetings. The scheduled tasks build context in the vault over time; the Cowork chat is where you use it."
+
+**Closing line:**
+> "Tomorrow morning, check `vault/` for your daily note. If it's there, Gary is working. Welcome aboard."
