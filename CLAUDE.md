@@ -277,3 +277,42 @@ When the user is ready, re-run the verification call for that source and update 
 - Exa: "Enables on-demand topic research across the web and social media. Add it in Settings → MCP Servers (Code tab) anytime."
 
 **Gate:** Do not proceed to Step 3 until at least Gmail AND Calendar are ✅. Slack is strongly recommended but not required.
+
+### Step 3: Set Up Scheduled Tasks
+
+**Ask one question:**
+> "What time do you usually start your day? (e.g., 7 AM, 9 AM)"
+
+**Calculate all task schedules from the user's start time.** Use these rules:
+
+| Task | Schedule Rule |
+|------|--------------|
+| Slack Prefetch | Daily, start time minus 30 minutes |
+| Morning Briefing | Weekdays at start time |
+| Meeting Prep | Every 30 minutes from start time to start time + 10 hours, weekdays |
+| EOD Digest | Weekdays at start time + 10 hours |
+| Weekly Retrospective | Friday at start time + 10 hours |
+| Weekly Look-Ahead | Sunday at 7:00 PM (fixed) |
+
+**Present the calculated schedule as a table.** Example for a 7:00 AM start:
+
+| # | Task | Schedule | Prompt |
+|---|------|----------|--------|
+| 1 | Slack Prefetch | Daily at 6:30 AM | `Read prompts/slack-prefetch.md and run it.` |
+| 2 | Morning Briefing | Weekdays at 7:00 AM | `Read prompts/morning-briefing.md and run it.` |
+| 3 | Meeting Prep | Every 30 min, 7 AM – 5 PM weekdays | `Read prompts/meeting-prep.md and run it.` |
+| 4 | EOD Digest | Weekdays at 5:00 PM | `Read prompts/eod-digest.md and run it.` |
+| 5 | Weekly Retrospective | Friday at 5:00 PM | `Read prompts/weekly-retrospective.md and run it.` |
+| 6 | Weekly Look-Ahead | Sunday at 7:00 PM | `Read prompts/weekly-lookahead.md and run it.` |
+
+**Then instruct the user:**
+> "To set these up: open Claude Desktop → Settings → Scheduled Tasks. For each task, create a new scheduled task pointing at your gary-ai project folder with the schedule and prompt shown above."
+
+**Ask the user their preference:**
+> "Want me to walk through them one at a time, or would you prefer the full list to create them in a batch?"
+
+- **One-by-one mode:** Present Task 1 details. Wait for user to confirm it's created (e.g., "done", "next", "created"). Then present Task 2. Repeat through Task 6.
+- **Batch mode:** The full table is already shown. Say "Let me know when you've created all 6."
+
+**After all tasks are created, confirm:**
+> "All 6 scheduled tasks are set up. Your first automated briefing will run tomorrow at [calculated briefing time]."
