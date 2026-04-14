@@ -223,3 +223,57 @@ fi
 After collecting answers, update the "About Your User" table with their responses. Confirm the changes with the user.
 
 Do NOT ask about email, calendar, or Slack — those are verified automatically in Step 2.
+
+### Step 2: Verify Data Sources (automatic — do not ask)
+
+Test each MCP connector silently. Do not ask the user whether they connected anything — just try calling each one.
+
+**Verification calls:**
+
+| Source | What to call | What to extract |
+|--------|-------------|-----------------|
+| Gmail | `gmail_get_profile` | Email address from the profile response |
+| Google Calendar | `gcal_list_calendars` | Calendar list (confirms connection) |
+| Slack | List channels or check auth status | Workspace name |
+| GitHub | Run `gh auth status` via bash | GitHub username |
+| Exa | Run a trivial Exa search | Confirms connection |
+
+**After testing all sources, show a status dashboard:**
+
+```
+📊 Data Sources
+✅ Gmail (user@example.com)
+✅ Google Calendar
+✅ Slack (workspace-name)
+⬚ GitHub — not configured (optional)
+⬚ Exa — not configured (optional, enables topic research)
+```
+
+**Status icons:**
+- ✅ = connected and working
+- ❌ = not working (required sources only — Gmail and Calendar)
+- ⬚ = not configured (optional sources)
+
+**For each ✅ source:** Auto-populate the matching table in this file:
+- Gmail ✅ → fill in the Email table with the detected email address and set Status to "Connected"
+- Google Calendar ✅ → fill in the Calendar table and set Status to "Connected"
+- Slack ✅ → fill in the Slack table with the detected workspace name and set Status to "Connected"
+- GitHub ✅ → fill in the GitHub table with the detected username and set Status to "Connected"
+
+**For ✅ Slack specifically:** After confirming the connection, ask one question:
+> "Slack is connected. Which 3-5 channels matter most to you? (e.g., #engineering, #general, #product)"
+
+Populate the "Channels to monitor" table with their answer.
+
+**For ❌ required sources (Gmail, Calendar):** Give a specific fix instruction:
+- Gmail or Calendar: "To connect: open Claude Desktop → Settings → MCP Servers (Code tab) → search for [Gmail / Google Calendar] → authorize with your Google account."
+- Slack: "To connect: open Claude Desktop → Settings → MCP Servers (Cowork tab) → search for Slack → authorize with your workspace."
+
+After giving the instruction, say: "Let me know when you've connected it and I'll re-check."
+When the user is ready, re-run the verification call for that source and update the dashboard.
+
+**For ⬚ optional sources:** Mention what they enable, do not pressure:
+- GitHub: "Enables PR and issue tracking in your briefings. You can add it anytime: `brew install gh && gh auth login`."
+- Exa: "Enables on-demand topic research across the web and social media. Add it in Settings → MCP Servers (Code tab) anytime."
+
+**Gate:** Do not proceed to Step 3 until at least Gmail AND Calendar are ✅. Slack is strongly recommended but not required.
