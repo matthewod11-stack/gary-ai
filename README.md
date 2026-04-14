@@ -53,15 +53,13 @@ The vault is just markdown — point Obsidian at it for mobile sync, or just rea
 
 ## Get Started
 
-**~30 minutes to set up. No coding required. No terminal.**
+**~20 minutes to set up. No coding required. No terminal.**
 
 Follow the walkthrough in **[SETUP.md](SETUP.md)**:
 
 1. Download the [Claude Desktop app](https://claude.ai/download) — that's the only install
 2. Connect your data sources (Gmail, Calendar, Slack) in Settings
-3. Open this project folder in the app and start a chat — Gary walks you through onboarding (5 questions, writes your config)
-4. Run your first morning briefing
-5. Set up scheduled tasks so it runs itself
+3. Open this project folder in the app and start a chat — Gary walks you through onboarding: 4 quick questions, auto-detects your connections, sets up all scheduled tasks, and runs your first briefing live
 
 ## Requirements
 

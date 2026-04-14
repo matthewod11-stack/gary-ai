@@ -136,43 +136,28 @@ Then say:
 
 > **"Read CLAUDE.md and run my onboarding. Ask me the setup questions."**
 
-Gary will ask you ~6 questions:
-1. What's your name?
-2. What's your role? (e.g., "founder at Acme Corp", "PM at BigCo")
-3. What email account should I check? (the one connected in Step 3)
-4. What Slack workspace did you connect?
-5. Which Slack channels matter most to you? (list 3-5 to start)
-6. Do you have a GitHub account to track? (optional)
+Gary walks you through a guided setup:
 
-Gary writes your answers into `CLAUDE.md` — that becomes your assistant's brain.
+1. **4 quick questions** — your name, role, city, and GitHub username (optional)
+2. **Auto-detects your data sources** — silently tests each MCP connector you set up in Step 3 and shows a status dashboard. No need to re-enter what you already connected. If something's missing, Gary gives you the exact fix instruction.
+3. **Sets up all 6 scheduled tasks** — asks what time you start your day, calculates the full schedule, and walks you through creating each task in Claude Desktop Settings.
+4. **Runs your first briefing live** — so you can see exactly what Gary produces before anything runs on autopilot.
 
-### Step 5: Run Your First Briefing
-
-Still in the Claude Code session, say:
-
-> **"Read prompts/morning-briefing.md and run it."**
-
-Gary will:
-- Check your email for unread messages
-- Pull today's calendar
-- Read your Slack channels
-- Write a daily note to `vault/YYYY-MM-DD.md`
+By the end of onboarding, your `CLAUDE.md` is configured, your connections are verified, your scheduled tasks are running, and your first daily note is in `vault/`.
 
 **If something fails** (e.g., Slack not connected yet), Gary handles it gracefully — the briefing still generates with a note about which sources were unavailable.
 
-Open the file in any text editor (or Obsidian — see Tier 3) to see your first briefing.
-
 ---
 
-## Tier 2: Automate It (15 minutes)
+## Tier 2: Automate It (reference)
 
-Now that you've seen the briefing work, set it up to run automatically.
+> **If you ran the onboarding in Step 4, your scheduled tasks are already set up.** This section is a reference for what each task does, or if you want to adjust schedules later.
 
-### Step 6: Set Up Scheduled Tasks
+### Scheduled Tasks
 
-In **Claude Code Desktop**, go to **Settings > Scheduled Tasks** (or use the CLI: `claude task create`).
+In **Claude Code Desktop**, go to **Settings > Scheduled Tasks** to view or edit your tasks.
 
-Create these three tasks, each pointing at the `gary-ai` project folder:
+These are the tasks Gary sets up during onboarding, each pointing at the `gary-ai` project folder:
 
 #### Task 1: Slack Prefetch
 - **Schedule:** Daily, 30 minutes before your briefing time
